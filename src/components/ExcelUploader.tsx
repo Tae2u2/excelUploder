@@ -16,18 +16,10 @@ const ExcelUploader = ({
   payList: string[];
   uploadFn?: (data: any) => void;
 }) => {
-  const {
-    jsonData,
-    handleFileUpload,
-    resetFile,
-    sheetList,
-    columnList,
-    createExcelBlob,
-  } = useExcelToJson();
+  const { jsonData, handleFileUpload, resetFile, sheetList, columnList, createExcelBlob } =
+    useExcelToJson();
   const [currentSheet, setCurrentSheet] = useState<string>(sheetList[0] || "");
-  const [formData, setFormData] = useState<{ [key: string]: string | number }>(
-    {}
-  );
+  const [formData, setFormData] = useState<{ [key: string]: string | number }>({});
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleReset = () => {
@@ -99,9 +91,7 @@ const ExcelUploader = ({
     return new File([blob], fileName, { type: "application/json" });
   };
 
-  const [uploadDate, setUploadDate] = useState([
-    dateFormatter("yyyy-mm-01", new Date()),
-  ]);
+  const [uploadDate, setUploadDate] = useState([dateFormatter("yyyy-mm-01", new Date())]);
 
   const onUploadClick = () => {
     const uploadExcel = jsonToFile(editedData, excelFileName);
@@ -129,16 +119,12 @@ const ExcelUploader = ({
           onChange={handleFileSelect}
           className="w-full max-w-[600px]"
         />
-        <button
-          type="button"
-          onClick={handleReset}
-          className="button-basic-red"
-        >
+        <button type="button" onClick={handleReset} className="button-basic-red">
           <Trash size={19} />
         </button>
       </div>
       <div className="w-full max-w-[500px] flex justify-between items-center mb-3 gap-3">
-        <DatePicker date={uploadDate} setDate={setUploadDate} />
+        {/* <DatePicker date={uploadDate} setDate={setUploadDate} /> */}
         <button
           type="button"
           className="button-basic-blue break-keep w-[160px]"
@@ -173,13 +159,7 @@ const ExcelUploader = ({
                   return (
                     <input
                       type="text"
-                      onChange={(e) =>
-                        handleInputChange(
-                          e,
-                          cell.original.No,
-                          column.accessorKey
-                        )
-                      }
+                      onChange={(e) => handleInputChange(e, cell.original.No, column.accessorKey)}
                       value={dateTransfer(cell.data, column.accessorKey)}
                       className={`${
                         validCheck(cell.data, column.accessorKey)
