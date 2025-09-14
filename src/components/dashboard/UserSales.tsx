@@ -74,9 +74,9 @@ const UserSales = () => {
   const isLoading = false;
 
   return (
-    <div className="dashboard-sales-container">
-      <div className="dashboard-sales-wrapper">
-        <section className="dashboard-text">
+    <div className="flex flex-wrap gap-4 w-[860px]">
+      <div className="flex w-full max-w-[420px] shadow rounded p-5">
+        <section className="flex flex-col justify-around">
           <p>
             목표 매출 달성률
             {/* <strong className="flex items-center gap-1 p-2">
@@ -105,8 +105,8 @@ const UserSales = () => {
         </section>
         <PieCharts data={salesData} />
       </div>
-      <div className="dashboard-sales-wrapper">
-        <section className="dashboard-text">
+      <div className="flex w-full max-w-[420px] shadow rounded p-5">
+        <section className="flex flex-col justify-around">
           <p>
             누적 목표 매출 달성률
             {isLoading ? (
@@ -116,7 +116,7 @@ const UserSales = () => {
               </>
             ) : (
               <>
-                <b>{goalData.accum_amount.toLocaleString()}</b>
+                <b>{goalData.accum_amount.toLocaleString()}</b>/
                 <small>{goalData.accum_goal.toLocaleString()}</small>
               </>
             )}
@@ -211,10 +211,11 @@ export const NetSales = () => {
 
   return (
     <>
-      <div className="dashboard-sales-wrapper">
-        <section className="dashboard-text">
+      <div className="flex w-full max-w-[420px] shadow rounded p-5">
+        <section className="flex flex-col justify-around">
           <p>
             목표 순매출 달성률
+            <br />
             {isLoading ? (
               <>
                 <b className="bg-slate-100 w-12 h-4 animate-pulse rounded mb-1"></b>
@@ -222,7 +223,7 @@ export const NetSales = () => {
               </>
             ) : (
               <>
-                <b>{netGoalData.amount.toLocaleString()}</b>
+                <b>{netGoalData.amount.toLocaleString()}</b>/
                 <small>{netGoalData.goal.toLocaleString()}</small>
               </>
             )}
@@ -238,8 +239,8 @@ export const NetSales = () => {
 
         <PieCharts data={netDataAmount} />
       </div>
-      <div className="dashboard-sales-wrapper">
-        <section className="dashboard-text">
+      <div className="flex w-full max-w-[420px] shadow rounded p-5">
+        <section className="flex flex-col justify-around">
           <p>
             누적 목표 순매출 달성률
             {isLoading ? (
@@ -249,7 +250,7 @@ export const NetSales = () => {
               </>
             ) : (
               <>
-                <b>{netGoalData.accum_amount.toLocaleString()}</b>
+                <b>{netGoalData.accum_amount.toLocaleString()}</b>/
                 <small>{netGoalData.accum_goal.toLocaleString()}</small>
               </>
             )}

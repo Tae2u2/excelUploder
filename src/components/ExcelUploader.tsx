@@ -103,6 +103,11 @@ const ExcelUploader = ({
     }
   };
 
+  console.log(jsonData);
+  console.log(sheetList);
+  console.log(jsonData[currentSheet]);
+  console.log(columnList);
+
   useEffect(() => {
     if (jsonData[currentSheet]?.length > 0) {
       setEditedData(jsonData[currentSheet]);

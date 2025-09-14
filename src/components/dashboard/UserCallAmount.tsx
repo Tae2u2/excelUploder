@@ -41,6 +41,21 @@ const UserCallAmount = () => {
         count: 160,
         valid_count: 130,
       },
+      {
+        date: "2025-08-05",
+        count: 180,
+        valid_count: 150,
+      },
+      {
+        date: "2025-08-06",
+        count: 200,
+        valid_count: 170,
+      },
+      {
+        date: "2025-08-07",
+        count: 220,
+        valid_count: 190,
+      },
     ].map((item: any) => {
       const countData = {
         date: item.date,
@@ -72,6 +87,15 @@ const UserCallAmount = () => {
         date: "2025-08-04",
         duration: 390,
       },
+      {
+        date: "2025-08-05",
+        duration: 500,
+      },
+      {
+        date: "2025-08-06",
+        duration: 600,
+      },
+      { date: "2025-08-07", duration: 700 },
     ].map((item: any) => {
       const columns = {
         date: item.date.slice(5, 10),
@@ -102,16 +126,22 @@ const UserCallAmount = () => {
     return [{ id: "rank", color: "hsl(26, 70%, 50%)", data: [...rank] }];
   }, [rank]);
 
+  useEffect(() => {
+    handleCallCountChartData();
+    handleCallTimeData();
+    handleRankData();
+  }, []);
+
   return (
-    <div className="dashboard-call-container">
+    <div className="p-5 shadow rounded w-full max-w-[860px]">
       <div className="dashboard-call-wrapper">
-        <b>개인 업무량 차트</b>
+        <h4 className="mb-2 text-base">개인 업무량 차트</h4>
         <div className="flex gap-1">
           {tabList.map((tabItem) => (
             <button
               type="button"
               key={tabItem}
-              className="button-basic-sky"
+              className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed"
               onClick={() => onTabClick(tabItem)}
             >
               {tabItem}

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import ExcelUploader from "./ExcelUploader";
-import useExcelToJson from "../hooks/useExcelToJson";
+import ExcelUploader from "../ExcelUploader";
+import useExcelToJson from "../../hooks/useExcelToJson";
 
 // 훅 mock
 jest.mock("../hooks/useExcelToJson", () => ({
@@ -38,11 +38,7 @@ beforeEach(() => {
 
 test("렌더링 및 기본 요소 표시", () => {
   render(
-    <ExcelUploader
-      requiredKeys={["name", "amount"]}
-      dateList={["date"]}
-      payList={["amount"]}
-    />
+    <ExcelUploader requiredKeys={["name", "amount"]} dateList={["date"]} payList={["amount"]} />
   );
 
   expect(screen.getByText("서버로 전송")).toBeInTheDocument();
@@ -53,11 +49,7 @@ test("렌더링 및 기본 요소 표시", () => {
 
 test("파일 선택 시 handleFileUpload 호출", () => {
   render(
-    <ExcelUploader
-      requiredKeys={["name", "amount"]}
-      dateList={["date"]}
-      payList={["amount"]}
-    />
+    <ExcelUploader requiredKeys={["name", "amount"]} dateList={["date"]} payList={["amount"]} />
   );
 
   const file = new File(["test"], "test.xlsx", {
@@ -71,11 +63,7 @@ test("파일 선택 시 handleFileUpload 호출", () => {
 
 test("reset 버튼 클릭 시 resetFile 호출", () => {
   render(
-    <ExcelUploader
-      requiredKeys={["name", "amount"]}
-      dateList={["date"]}
-      payList={["amount"]}
-    />
+    <ExcelUploader requiredKeys={["name", "amount"]} dateList={["date"]} payList={["amount"]} />
   );
 
   const resetButton = screen.getByRole("button");
